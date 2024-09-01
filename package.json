@@ -1,11 +1,16 @@
 {
-  "name": "ivan-ui",
-  "version": "0.1.0",
-  "private": true,
+  "name": "ivan-admin-ui",
+  "version": "0.1.1",
+  "private": false,
+  "main": "dist/ivan-ui.umd.min.js",
+  "author": {
+    "name": "ivanadmin"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib":"vue-cli-service build --target lib package/index.js"
   },
   "dependencies": {
     "core-js": "^3.8.3",
