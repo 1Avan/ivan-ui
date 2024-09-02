@@ -6,7 +6,7 @@
       class="iv-input_inner"
       :class="{ 'is-disabled': disabled }"
       :placeholder="placeholder"
-      :type="type"
+      :type="showPassword?(passwordVisible ? 'text' : 'password') :type"
       :name="name"
       :disabled="disabled"
     />
@@ -18,7 +18,7 @@
         @click="clear"
       ></i>
       <i
-        class="iconfont iv-icon-invisible"
+        :class="['iconfont', {' iv-icon-invisible':!passwordVisible,'iv-icon-show-password':passwordVisible}]"
         v-if="showPassword && type == 'password'"
         @click="handlePassword"
       ></i>
@@ -48,7 +48,7 @@ export default {
     },
     clearable: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     value: {
       type: String,
@@ -60,16 +60,21 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      passwordVisible: false
+    };
   },
   methods: {
     clear() {
       this.$emit("input", "");
-      console.log(111);
     },
     handleInput(e) {
       this.$emit("input", e.target.value);
     },
+        //显示或隐藏密码
+    handlePassword(){
+      this.passwordVisible = !this.passwordVisible
+    }
   },
 };
 </script>
